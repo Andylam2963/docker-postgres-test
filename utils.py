@@ -20,6 +20,7 @@ def getRandomFirstName():
 def getRandomLastName():
     return choice(last_names)
 
+
 def getEmail(first_name, last_name):
     return ''.join([first_name, '_', last_name, '@domain.com']).lower()
 
@@ -31,16 +32,19 @@ def getID(first_name, last_name):
     '''
     return int(hashlib.md5(''.join([first_name, last_name]).encode('utf-8')).hexdigest(), 16) % int(math.pow(10, 8))
 
+
 def generateSample(size):
     user_list = []
     for i in range(size):
-        new_user = {}
+        user_dict = {}
         first_name = getRandomFirstName()
         last_name = getRandomLastName()
-        new_user['name'] = ' '.join([first_name, last_name])
-        new_user['email_address'] = getEmail(first_name, last_name)
-        new_user['user_id'] = getID(first_name, last_name)
+        user_dict['name'] = ' '.join([first_name, last_name])
+        user_dict['user_id'] = getID(first_name, last_name)
+        user_dict['email_address'] = getEmail(first_name, last_name)
 
-        user_list.append(new_user)
+        user_tuple = (user_dict['name'], user_dict['user_id'], user_dict['email_address'])
+
+        user_list.append(user_tuple)
 
     return user_list
