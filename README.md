@@ -54,4 +54,8 @@ python main.py 100
 
 ###### The names in `namelist.json` were obtained from https://github.com/smashew/NameDatabases.
 
+## Testing
+
+use `pytest --ignore=postgres-data` to run tests. The `--ignore=postgres-data` ignores the folder `postgres-data` since it is inaccessible by the testing module.
+
 
